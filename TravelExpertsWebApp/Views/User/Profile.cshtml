@@ -1,0 +1,77 @@
+﻿@model TravelExpertsData.Customer
+@{
+    ViewData["Title"] = "User profile";
+}
+
+<form asp-action="Profile" method="post" class="form-inline">
+  <div asp-validation-summary="ModelOnly"></div>
+  <div class="form-outline mb-4">
+    <input asp-for="CustomerId" type="number" class="form-control col-md-6" hidden/>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustFirstName" class="form-label col-md-3">First name</label>
+    <input asp-for="CustFirstName" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustFirstName" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustLastName" class="form-label col-md-3">Last name</label>
+    <input asp-for="CustLastName" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustLastName" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustAddress" class="form-label col-md-3">Address</label>
+    <input asp-for="CustAddress" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustAddress" class="text-danger"></span>
+  </div>
+   <div class="form-outline mb-4">
+    <label asp-for="CustCity" class="form-label col-md-3">City</label>
+    <input asp-for="CustCity" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustCity" class="text-danger"></span>
+  </div>
+     <div class="form-outline mb-4">
+    <label asp-for="CustProv" class="form-label col-md-3">Province</label>
+    <input asp-for="CustProv" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustProv" class="text-danger"></span>
+  </div>
+     <div class="form-outline mb-4">
+    <label asp-for="CustCountry" class="form-label col-md-3">Country</label>
+    <input asp-for="CustCountry" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustCountry" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustPostal" class="form-label col-md-3">Postal Code</label>
+    <input asp-for="CustPostal" type="text" class="form-control col-md-6" />
+    <span asp-validation-for="CustPostal" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustEmail" class="form-label col-md-3">Home Phone</label>
+    <input asp-for="CustEmail" type="email" class="form-control col-md-6" />
+    <span asp-validation-for="CustEmail" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustHomePhone" class="form-label col-md-3">Home Phone</label>
+    <input asp-for="CustHomePhone" type="tel" class="form-control col-md-6" />
+    <span asp-validation-for="CustHomePhone" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="CustBusPhone" class="form-label col-md-3">Business Phone</label>
+    <input asp-for="CustBusPhone" type="tel" class="form-control col-md-6" />
+    <span asp-validation-for="CustBusPhone" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="UserId" class="form-label col-md-3">User ID</label>
+    <input asp-for="UserId" type="text" class="form-control col-md-6" readonly />
+    <span asp-validation-for="UserId" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="Password" class="form-label col-md-3">Password</label>
+    <input asp-for="Password" type="password" class="form-control col-md-6" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+  </div>
+  <div class="form-outline mb-4">
+    <label asp-for="ConfirmPassword" class="form-label col-md-3">Confirm Password</label>
+    <input asp-for="ConfirmPassword" type="password" class="form-control col-md-6" />
+    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Save</button>
+</form>

@@ -53,6 +53,8 @@ namespace TravelExpertsData
         public string UserId { get; set; }
         [StringLength(25)]
         public string Password { get; set; }
+        [NotMapped]
+        public string ConfirmPassword { get; set; }
 
         [ForeignKey(nameof(AgentId))]
         [InverseProperty("Customers")]
