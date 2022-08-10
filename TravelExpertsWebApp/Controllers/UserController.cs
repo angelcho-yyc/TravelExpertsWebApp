@@ -44,9 +44,7 @@ namespace TravelExpertsWebApp.Controllers
             else
             {
                 return View(newData);  // stay on the same view
-            }
-               
-               
+            }               
         }
     }
 }

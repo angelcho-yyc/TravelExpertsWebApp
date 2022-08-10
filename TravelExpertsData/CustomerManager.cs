@@ -25,6 +25,36 @@ namespace TravelExpertsData
         }
 
         /// <summary>
+        /// check if userId is already in use
+        /// </summary>
+        /// <param name="userId">userId</param>
+        /// <returns>message about userId in use or empty message</returns>
+        public static string CheckUserIdExists(string userId)
+        {
+            TravelExpertsContext db = new TravelExpertsContext();
+            string msg = "";
+            Customer cust = db.Customers.SingleOrDefault(c => c.UserId == userId); // check if username has been taken
+            if (cust != null) // there is customer with the same userId
+            {
+                msg = $"User ID {userId} already in use";
+            }
+            return msg;
+        }
+
+        /// <summary>
+        /// add new customer to the database
+        /// </summary>
+        /// <param name="newCust">new customer</param>
+        public static void AddCustomer(Customer newCust)
+        {
+            TravelExpertsContext db = new TravelExpertsContext();
+            newCust.CustBusPhone = newCust.CustBusPhone == null? "" : newCust.CustBusPhone;
+            newCust.CustEmail = newCust.CustEmail == null ? "" : newCust.CustEmail;
+            db.Customers.Add(newCust);
+            db.SaveChanges();
+        }
+
+        /// <summary>
         /// get customer by Id
         /// </summary>
         /// <param name="custId">customer Id</param>
@@ -50,16 +80,15 @@ namespace TravelExpertsData
             customer.CustAddress = newData.CustAddress;
             customer.CustCity = newData.CustCity;
             customer.CustProv = newData.CustProv;
-            customer.CustCountry = newData.CustCountry;
             customer.CustPostal = newData.CustPostal;
-            customer.CustEmail = newData.CustEmail;
+            customer.CustCountry = newData.CustCountry;
             customer.CustHomePhone = newData.CustHomePhone;
-            customer.CustBusPhone = newData.CustBusPhone;
+            customer.CustBusPhone = newData.CustBusPhone == null? "" : newData.CustBusPhone;
+            customer.CustEmail = newData.CustEmail == null? "": newData.CustEmail;
             customer.Password = newData.Password;
             db.SaveChanges();
 
             return customer;
-
         }
     }
 }

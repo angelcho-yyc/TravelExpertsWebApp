@@ -33,7 +33,7 @@
     <div class="container">
         @if(TempData["Message"] != null)
         {
-            <h4 class="@(TempData["IsError"] != null? "bg-danger text-white": "bg-info") text-center ">
+            <h4 class="@(TempData["IsError"] != null? "bg-danger text-white": "bg-success") text-center ">
                 @TempData["Message"]
             </h4>
         }

@@ -11,6 +11,46 @@ namespace TravelExpertsWebApp.Controllers
 {
     public class AccountController : Controller
     {
+        // register page
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        // post register form data of new customer
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(Customer newCust)
+        {
+            // check if there is existing username
+            string msg = CustomerManager.CheckUserIdExists(newCust.UserId);
+            if (!string.IsNullOrEmpty(msg))
+            {
+                ModelState.AddModelError(nameof(newCust.UserId), msg); // add model error and display error message
+                return View(newCust);
+            }
+
+            if (ModelState.IsValid) // if form data is ok
+            {
+                try
+                {
+                    CustomerManager.AddCustomer(newCust); // add new customer to the database
+                    TempData["Message"] = "Registration completed.";
+                    return RedirectToAction("Login"); // redirect to login page
+                }
+                catch
+                {
+                    TempData["IsError"] = true;
+                    TempData["Message"] = "Error when attempting to register. Try again later";
+                    return View(newCust); //stay on the same view
+                }
+            }
+            else
+            {
+                return View(newCust); // stay on the same view
+            }
+        }
+
         public IActionResult Login(string returnUrl = "")
         {
             if (returnUrl != null)
